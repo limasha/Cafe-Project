@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CafeProject.Models.ItemList>
+
+<div style="font-family:Verdana;">
+    <div>
+        <h1 class="title" style="font-size: 2.5em;font-family:Arial;text-align:left;color:dodgerblue">Admin</h1>
+        <hr />
+    </div>
+    <div style="margin-top:3%;">
+        <b>@Html.ActionLink("Create New", "Create")</b>
+    </div>
+
+    <table class="table table-hover" style="margin-top:3%;margin-bottom:6%;">
+        <tr style="background-color:black;color:white;">
+            <th>
+                @Html.DisplayName("Item ID")
+            </th>
+            <th>
+                @Html.DisplayName("Item Name")
+            </th>
+            <th>
+                @Html.DisplayName("Description")
+            </th>
+            <th>
+                @Html.DisplayName("Unit Price")
+            </th>
+            <th>
+                @Html.DisplayName("Added Date")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="bg-success">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddedDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

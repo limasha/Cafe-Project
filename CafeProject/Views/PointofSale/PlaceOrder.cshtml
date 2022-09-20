@@ -1,0 +1,142 @@
+﻿@model CafeProject.Models.OrderList
+
+
+@{
+    ViewBag.Title = "Place Order";
+}
+
+@Scripts.Render("~/Content/css")
+@Scripts.Render("~/bundles/JQWidgets")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        //$("#CalBtn").click(function () {
+
+        //    var UnitPrice = $("#UnitPrice").val();
+        //    var Qty = $("#Qty").val();
+
+        //    var Total = (UnitPrice * Qty);
+
+        //    document.getElementById("Total").value = Total;
+
+        //});
+
+        $("#Qty").keyup(function () {
+
+            var UnitPrice = $("#UnitPrice").val();
+            var Qty = $("#Qty").val();
+
+            var Total = (UnitPrice * Qty);
+
+            document.getElementById("Total").value = Total;
+        });
+
+    });
+
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal col-md-6">
+        <div>
+            <h1 class="title" style="font-size: 2.5em;font-family:Arial;text-align:left;color:purple">Place Order</h1>
+        </div>
+
+        <div style="border:1px solid purple;font-family:Verdana;margin-top:2%;margin-bottom:6%;width:95%;height:50%;background-color:#fbe361;">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row" style="margin-top:8%;margin-left:3%;margin-bottom:5%">
+                        @Html.Label("Order ID", "Order ID", new { @class = "control-label col-sm-4", @Style = "font-weight:bold;text-align:left" })
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.OrderId, new { @class = "form-control", @id = "OrderId", style = "width:100%" })
+                            @Html.ValidationMessageFor(model => model.OrderId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row" style="margin-left:3%;margin-bottom:5%">
+                        @Html.Label("Item Name", "Item Name", new { @class = "control-label col-sm-4", @Style = "font-weight:bold;text-align:left" })
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.ItemName, new { @class = "form-control", @id = "ItemName", style = "width:100%" })
+                            @Html.ValidationMessageFor(model => model.ItemName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row" style="margin-left:3%;margin-bottom:5%">
+                        @Html.Label("Unit Price", "Unit Price", new { @class = "control-label col-sm-4", @Style = "font-weight:bold;text-align:left" })
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.UnitPrice, new { @class = "form-control", @id = "UnitPrice", style = "width:100%" })
+                            @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row" style="margin-left:3%;margin-bottom:8%">
+                        @Html.Label("Qty", "Qty", new { @class = "control-label col-sm-4", @Style = "font-weight:bold;text-align:left" })
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.Qty, new { @class = "form-control", @id = "Qty", style = "width:100%" })
+                            @Html.ValidationMessageFor(model => model.Qty, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="border:1px solid purple;font-family:Verdana;margin-top:4%;margin-bottom:4%;width:95%;height:50%;background-color:#fbe361;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row" style="margin-left:3%;margin-top:4%;margin-bottom:4%">
+                        @Html.Label("Total", "Total", new { @class = "control-label col-sm-4", @Style = "font-weight:bold;text-align:left" })
+                        <div class="col-sm-7">
+                            @*<div id='Date'></div>*@
+                            @Html.TextBoxFor(model => model.Total, new { @class = "form-control", @id = "Total", style = "width:100%" })
+                            @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:10%;margin-left:0%;margin-bottom:8%;">
+            
+                <div style="margin-right:3%;">
+                    <input type="submit" value="Place Order" class="btn btn-primary col-sm-5" style="position:relative;font-size: 14px;text-align:center;background-color:#4e054e;border:0px">
+                </div>
+           
+                <div class="col-sm-7">
+                    <input type="reset" value="Clear" class="btn btn-primary col-sm-6 @*pull-right*@" style="position:relative;font-size: 14px;text-align:center;background-color:#cc0d2e;border:0px">
+                </div>
+
+        </div> 
+
+        <div class="row" style="margin-left:0%;margin-bottom:6%;">
+            <b>@Html.ActionLink("Back to Order List", "OrderIndex")</b>
+        </div>
+    </div>
+    @*</div>*@
+
+    <div class="col-md-6" style="margin-top:6%;margin-right:2%;width:80px;height:20px;">
+        <img src="~/Images/istockphoto-505168330-612x612.jpg" alt="image1" style="width:350px;height:260px;margin-bottom:4%;" />
+        <img src="~/Images/kottu-6319363_960_720.jpg" alt="image2" style="width:350px;height:260px;margin-left:350px;" />
+    </div>
+}

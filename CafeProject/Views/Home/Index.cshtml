@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    //Layout = "~/Views/Shared/Default_Layout.cshtml";
+}
+
+@Scripts.Render("~/Content/css")
+@Scripts.Render("~/bundles/JQWidgets")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides()
+    {
+          var i;
+          var slides = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("dot");
+          for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) { slideIndex = 1 }
+
+          for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+
+          }
+
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+
+    });
+
+     function page1()
+    {
+        window.location('@Url.Action("PlaceOrder","PointofSale")');
+    }
+
+    function page2()
+    {
+        window.location('@Url.Action("Index","Admin")');
+    }
+
+    function page3()
+    {
+        window.location('@Url.Action("Index","Home")');
+    }
+</script>
+
+@*<link rel="stylesheet" href="~/Content/Style.css" />*@
+
+<div style="margin-bottom:25%;margin-top:2%;">
+    <div class="col-md-3">
+        <img src="~/Images/chef.jpg" alt="chef logo" style="width:230px; height:230px;" />
+    </div>
+    <div class="col-md-9">
+        <h1 style="font-size:120px;">
+            Cafe
+            <img src="~/Images/s_100px.png" alt="logo S" />
+            <img src="~/Images/n_100px.png" alt="logo N" />
+            <img src="~/Images/l_100px.png" alt="logo L" />
+        </h1>
+    </div>
+</div>
+
+<div>
+
+    <div class="slideshow-container" style="margin-right:30%;">
+
+        <div class="mySlides fade">
+            <img src="~/Images/Joe-Theismanns-Burger-1024x683.jpg" style="width:1200px;height:500px;">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="~/Images/tea-coffee-complimentary.jpg" style="width:1200px;height:500px;">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="~/Images/1_4AZGnlQDwEl1q5O-5IFY7g.jpeg" style="width:1200px;height:500px;">
+        </div>
+
+    </div>
+
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
+<div class="center-block row" style="padding:3% 3% 3% 5%;font-size:1.5em;font-weight:bold;margin-bottom:4%;margin-top:3%;">
+
+    <div class="card card-hover" id="page1" onclick="page1();">
+        <div class="col-md-3 text-center text-white" style="border: 2px solid gray;border-radius:5%; padding: 3% 3% 3% 3%; margin-right:12%;background-color:lightgrey;">
+            <img src="~/Images/small_business_96px.png" alt="point of sales" /><br />
+            <p>Point of Sale</p>
+        </div>
+    </div>
+
+    <div class="card card-hover" id="page2" onclick="page2();">
+        <div class="col-md-3 text-center" style="border: 2px solid gray;border-radius:5%;padding:3% 3% 3% 3%;margin-right:12%;background-color:lightgrey;">
+            <img src="~/Images/installing_updates_96px.png" alt="admin" /><br />
+            <p>Admin</p>
+        </div>
+    </div>
+
+    <div class="card card-hover" id="page3" onclick="page3();">
+        <div class="col-md-3 text-center" style="border: 2px solid gray;border-radius:5%;padding:3% 3% 3% 3%;background-color:lightgrey;">
+            <img src="~/Images/combo_chart_100px.png" alt="reports" /><br />
+            <p>Reports</p>
+        </div>
+    </div>
+
+</div>

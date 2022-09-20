@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "Point of Sale";
+}
+
+@Scripts.Render("~/Content/css")
+@Scripts.Render("~/bundles/JQWidgets")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/bootstrap")
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#BurgerTypes').hide();
+        $('#RollsTypes').hide();
+
+        $('#Burger').click(function () {
+            $('#RollsTypes').hide();
+            $('#BurgerTypes').show();
+        });
+
+        $('#Rolls').click(function () {
+            $('#BurgerTypes').hide();
+            $('#RollsTypes').show();
+        });
+
+        $('#dataTable').DataTable({
+            "ajax": {
+                "url": "/PointofSale/SendData",
+                "type": "GET",
+                "datatype": "json"
+            },
+            "columns": [
+                { "data": "ItemID" },
+                { "data": "ItemName" },
+                { "data": "UnitPrice" }
+            ]
+        });
+    });
+
+</script>
+
+
+
+<div style="margin-bottom:46%;">
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h2 style="color:darkmagenta;">Take Away</h2>
+        </div>
+
+        <div class="col-md-4" id="border" style="width:35%;">
+            <div class="panel panel-default">Categories</div>
+            <div style="margin-bottom:5%;">
+                <div class="col-md-4 text-center smallcard smallcardcategory" id="Burger" style="margin-right:5%;">Burger</div>
+                <div class="col-md-4 text-center smallcard smallcardcategory" id="Rolls" style="margin-right:5%;">Rolls</div>
+                <div class="col-md-4 text-center smallcard smallcardcategory" id="Sandwiches">Sandwiches</div>
+            </div>
+
+            <div style="margin-bottom:5%;">
+                <div class="col-md-4 text-center smallcard smallcardcategory" style="margin-right:5%;">Pastry</div>
+                <div class="col-md-4 text-center smallcard smallcardcategory" style="margin-right:5%;">Buns</div>
+                <div class="col-md-4 text-center smallcard smallcardcategory">Cutlets</div>
+            </div>
+
+            <div style="margin-bottom:5%;">
+                <div class="col-md-4 text-center smallcard smallcardcategory" style="margin-right:5%;">Patties</div>
+                <div class="col-md-4 text-center smallcard smallcardcategory" style="margin-right:5%;">Juice</div>
+                <div class="col-md-4 text-center smallcard smallcardcategory">Tea</div>
+            </div>
+
+            <div style="margin-bottom:5%;">
+                <div class="col-md-4 text-center smallcard smallcardcategory" style="margin-right:5%;">Pasta</div>
+                <div class="col-md-4 text-center smallcard smallcardcategory" style="margin-right:5%;">Fried Rice</div>
+                <div class="col-md-4 text-center smallcard smallcardcategory">Biryani</div>
+            </div>
+
+            <div style="margin-bottom:5%;">
+                <div class="col-md-4 text-center smallcard smallcardcategory" style="margin-right:5%;">Kottu</div>
+                <div class="col-md-4 text-center smallcard smallcardcategory" style="margin-right:5%;">Samosa</div>
+                <div class="col-md-4 text-center smallcard smallcardcategory">Vadai</div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4" id="border" style="width: 25%;">
+            <div class="panel panel-default">Available Items</div>
+            <div id="BurgerTypes">
+                <div style="margin-bottom:5%;">
+                    <div class="col-md-4 text-center smallcardblack smallcardAvailableItems" style="margin-right:15%;">Chicken Burger</div>
+                    <div class="col-md-4 text-center smallcardblack smallcardAvailableItems">Fish Burger</div>
+                </div>
+
+                <div style="margin-bottom:5%;">
+                    <div class="col-md-4 text-center smallcardblack smallcardAvailableItems" style="margin-right:15%;">Veggie Burger</div>
+                    <div class="col-md-4 text-center smallcardblack smallcardAvailableItems">Cheese Burger</div>
+                </div>
+            </div>
+
+            <div id="RollsTypes">
+                <div style="margin-bottom:5%;">
+                    <div class="col-md-4 text-center smallcardblack smallcardAvailableItems" style="margin-right:15%;">Fish Roll</div>
+                    <div class="col-md-4 text-center smallcardblack smallcardAvailableItems">Egg Roll</div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-4" id="border" style="width:40%;">
+            <div class="panel panel-default">Purchased Items</div>
+            <div class="panel-body" style="border:1px solid darkmagenta;">
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Item ID</th>
+                            <th>Item Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div>Payment</div>
+    <div class="panel-body" style="border:1px solid darkmagenta;">Body</div>
+</div>
+

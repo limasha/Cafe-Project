@@ -1,0 +1,64 @@
+﻿@model CafeProject.Models.ItemList
+
+<div class="col-md-6" style="border:1px solid #357ebd;font-family:Verdana;padding-left:3%;margin-top:4%;margin-right:10%;margin-bottom:4%;width:45%;height:50%;background-color:azure;">
+    <div>
+        <h1 class="title" style="font-size: 2.5em;font-family:Arial;text-align:left;color:dodgerblue;margin-top:7%">Item Details</h1>
+    </div>
+
+    <dl class="dl-horizontal" style="padding-top:10%;">
+
+        <dt style="text-align:left;margin-bottom:6%;">
+            @Html.DisplayName("Item ID")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemID)
+        </dd>
+
+        <dt style="text-align:left;margin-bottom:6%;">
+            @Html.DisplayName("Item Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemName)
+        </dd>
+
+        <dt style="text-align:left;margin-bottom:6%;">
+            @Html.DisplayName("Description")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt style="text-align:left;margin-bottom:6%;">
+            @Html.DisplayName("Unit Price")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt style="text-align:left;margin-bottom:6%;">
+            @Html.DisplayName("Added Date")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddedDate)
+        </dd>
+
+    </dl>
+    
+    <p style="margin-bottom:10%;">   
+        <b>
+           @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+           @Html.ActionLink("Back to List", "Index")
+        </b>
+    </p>
+</div>
+
+
+
+<div class="col-md-6" style="margin-top:6%;margin-right:2%;width:100px;height:20px;">
+    <img src="~/Images/indianfood.png" alt="image1" style="width:600px;height:400px;margin-bottom:4%;" />
+</div>  

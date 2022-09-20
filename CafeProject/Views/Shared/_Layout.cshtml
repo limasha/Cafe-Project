@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#060e3c;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <b>@Html.ActionLink("Cafe SNL", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</b>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Index", "Home")</li>
+                </ul>
+
+                <ul class="nav navbar-nav" style="margin-left:55%;">
+                    <li>@Html.ActionLink("Welcome", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Logout", "Index", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        
+    </div>
+        <div class="well" style="background-color:#060e3c;color:wheat;margin-bottom:0px">
+
+            <div class="col-lg-4" style="margin-left:20px">
+
+                <h3><span class="glyphicon glyphicon-map-marker"></span> Address</h3>
+                <ul class="list-group list-unstyled">
+
+                    <li>224 B,</li>
+                    <li>ABC Road,</li>
+                    <li>Bandaragama</li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4">
+
+                <h3><span class="glyphicon glyphicon-cog"></span> Our Details</h3>
+                <ul class="list-group list-unstyled">
+
+                    <li><span class="glyphicon glyphicon-envelope"></span> cafesnl@gmail.com</li>
+                    <li><span class="glyphicon glyphicon-phone"></span> 038-4432287 </li>
+                    <li><span class="glyphicon glyphicon-print"></span> 966-387-1159</li>
+
+                </ul>
+            </div>
+
+            <div class="col-lg-3">
+
+                <h3 style="margin-bottom: 5%;"><span class="glyphicon glyphicon-globe"></span> Get To Know Us</h3>
+
+                  <img src="~/Images/facebook_60px.png" alt="fb" style="width:35px;height:35px;"/>&nbsp;&nbsp;
+                  <img src="~/Images/instagram_60px.png" alt="insta" style="width:35px;height:35px;"/>&nbsp;&nbsp;
+                  <img src="~/Images/twitter_60px.png" alt="twitter" style="width:35px;height:35px;"/>
+
+            </div>
+
+            <div style="clear:both;"></div>
+
+
+        </div>
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/JQWidgets")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
